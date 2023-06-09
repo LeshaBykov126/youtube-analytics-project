@@ -32,6 +32,30 @@ class Channel:
         self.video_count = int(channel_info['statistics']['videoCount'])
         self.view_count = int(channel_info['statistics']['viewCount'])
 
+    def __str__(self) -> str:
+        """Возвращает строковое представление объекта Channel."""
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, other: 'Channel') -> int:
+        """Оператор сложения для объектов Channel. Складывает количество подписчиков."""
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other: 'Channel') -> int:
+        """Оператор вычитания для объектов Channel. Вычитает количество подписчиков."""
+        return self.subscriber_count - other.subscriber_count
+
+    def __lt__(self, other: 'Channel') -> bool:
+        """Оператор меньше для объектов Channel. Сравнивает количество подписчиков."""
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other: 'Channel') -> bool:
+        """Оператор меньше или равно для объектов Channel. Сравнивает количество подписчиков."""
+        return self.subscriber_count <= other.subscriber_count
+
+    def __eq__(self, other: 'Channel') -> bool:
+        """Оператор равенства для объектов Channel. Сравнивает количество подписчиков."""
+        return self.subscriber_count == other.subscriber_count
+
     @classmethod
     def get_service(cls):
         """Возвращает объект для работы с YouTube API."""
