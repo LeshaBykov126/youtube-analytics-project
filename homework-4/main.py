@@ -1,4 +1,9 @@
+import traceback
+
 from src.video import Video, PLVideo
+
+# Включение режима отображения полной информации об ошибке
+traceback.print_exception = traceback.print_exc
 
 if __name__ == '__main__':
     # Создаем два экземпляра класса
